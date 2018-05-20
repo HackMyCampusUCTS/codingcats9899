@@ -21,6 +21,7 @@ int countNum = 0;
 int xVar = 0;
 int yVar = 0;
 int button = 0;
+int center = 0;
 
 void joyDisplay();
 void countDisplay();
@@ -45,37 +46,47 @@ void loop(){
   yVar = analogRead(joyY);
   button = digitalRead(6);
   
-  if (yVar >= 354 && yVar <= 669 && xVar >= 0 && xVar <= 25){
+  if (xVar >= 0 && xVar <= 25 && yVar >= 354 && yVar <= 669){
     countNum = 0;
   }
-  if (yVar >= 0 && yVar <= 353 && xVar >= 0 &&  xVar <= 130){
+  if (xVar >= 0 &&  xVar <= 130 && yVar >= 0 && yVar <= 353){
     countNum = 1;
   }
-  if (yVar >= 0 && yVar <= 97 && xVar >= 131 &&  xVar <= 510){
+  if (xVar >= 131 &&  xVar <= 510 && yVar >= 0 && yVar <= 97){
     countNum = 2;
   }
-  if (yVar >= 0 && yVar <= 97 && xVar >= 515 &&  xVar <= 812){
+  if (xVar >= 515 &&  xVar <= 812 && yVar >= 0 && yVar <= 97){
     countNum = 3;
   }
-  if (yVar >= 0 && yVar <= 353 && xVar >= 813 &&  xVar <= 1023){
+  if (xVar >= 813 &&  xVar <= 1023 && yVar >= 0 && yVar <= 353){
     countNum = 4;
   }
-  if (yVar >= 354 && yVar <= 669 && xVar >= 999 &&  xVar <= 1023){
+  if (xVar >= 999 &&  xVar <= 1023 && yVar >= 354 && yVar <= 669){
     countNum = 5;
   }
-  if (yVar >= 700 && yVar <= 1023 && xVar >= 813 &&  xVar <= 1023){
+  if (xVar >= 813 &&  xVar <= 1023 && yVar >= 700 && yVar <= 1023){
     countNum = 6;
   }
-  if (yVar >= 926 && yVar <= 1023 && xVar >= 515 &&  xVar <= 812){
+  if (xVar >= 515 &&  xVar <= 812 && yVar >= 926 && yVar <= 1023){
     countNum = 7;
   }
-  if (yVar >= 926 && yVar <= 1023 && xVar >= 131 &&  xVar <= 510){
+  if (xVar >= 131 &&  xVar <= 510 && yVar >= 926 && yVar <= 1023){
     countNum = 8;
   }
-  if (yVar >= 700 && yVar <= 1023 && xVar >= 0 &&  xVar <= 130){
+  if (xVar >= 0 &&  xVar <= 130 && yVar >= 700 && yVar <= 1023){
     countNum = 9;
   }
+  if (xVar >= 500 &&  xVar <= 505 && yVar >= 515 && yVar <= 550){
+    center++;
+    if (center >= 100){
+      countNum = 0;
+    }
+  } else {
+    center = 0;
+  }
+  
 
+  
   joyDisplay();
   if( button == 1){
     countDisplay();
